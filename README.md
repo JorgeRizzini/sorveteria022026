@@ -114,3 +114,7 @@ sorveteria022026/
 ## Status
 
 Em desenvolvimento. As telas de Home, Cardápio e Carrinho estão disponíveis na branch `dev`.
+
+## Documentação técnica
+
+Consulte a [documentação completa de desenvolvimento e organização do repositório](docs/DESENVOLVIMENTO.md).
