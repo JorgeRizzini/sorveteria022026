@@ -1,0 +1,16 @@
+{
+  "name": "arcadecream",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "web",
+    "api"
+  ],
+  "scripts": {
+    "dev:web": "npm --workspace web run dev",
+    "dev:api": "npm --workspace api run dev",
+    "build": "npm --workspace api run build && npm --workspace web run build",
+    "lint": "npm --workspace web run lint && npm --workspace api run typecheck",
+    "test:connection": "npm --workspace api run test:connection"
+  }
+}
