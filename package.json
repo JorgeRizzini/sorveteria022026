@@ -4,13 +4,17 @@
   "version": "0.1.0",
   "workspaces": [
     "web",
-    "api"
+    "api",
+    "mobile"
   ],
   "scripts": {
     "dev:web": "npm --workspace web run dev",
     "dev:api": "npm --workspace api run dev",
-    "build": "npm --workspace api run build && npm --workspace web run build",
-    "lint": "npm --workspace web run lint && npm --workspace api run typecheck",
+    "dev:mobile": "npm --workspace mobile run start",
+    "android": "npm --workspace mobile run android",
+    "ios": "npm --workspace mobile run ios",
+    "build": "npm --workspace api run build && npm --workspace web run build && npm --workspace mobile run typecheck",
+    "lint": "npm --workspace web run lint && npm --workspace api run typecheck && npm --workspace mobile run typecheck",
     "test:connection": "npm --workspace api run test:connection"
   }
 }
