@@ -2,10 +2,12 @@
 
 ## Visão geral
 
-O repositório é um monorepo npm com dois workspaces: `web` e `api`. O front-end nunca acessa o banco diretamente; toda operação passa pela API, que conversa com o Supabase.
+O repositório é um monorepo npm com três workspaces: `web`, `mobile` e `api`. Os clientes nunca acessam o banco diretamente; toda operação passa pela API, que conversa com o Supabase.
 
 ```text
-Navegador (React) → API REST (Express) → Supabase Auth/PostgreSQL
+Web (React) ─┐
+             ├→ API REST (Express) → Supabase Auth/PostgreSQL
+Mobile (Expo)┘
 ```
 
 ## Árvore do repositório
@@ -24,6 +26,14 @@ Navegador (React) → API REST (Express) → Supabase Auth/PostgreSQL
 ├── docs/
 │   ├── API.md
 │   └── DESENVOLVIMENTO.md
+├── mobile/
+│   ├── src/
+│   │   ├── components/   # componentes React Native
+│   │   ├── data/         # catálogo mobile de contingência
+│   │   ├── lib/          # cliente HTTP e SecureStore
+│   │   ├── screens/      # Home, Cardápio e Carrinho
+│   │   └── App.tsx       # navegação e estado do aplicativo
+│   └── app.config.ts     # configuração Expo para Android/iOS
 ├── supabase/
 │   └── migrations/       # histórico versionado do banco
 ├── web/
@@ -49,6 +59,7 @@ Copie `.env.example` para `.env` na raiz. Não crie arquivos de ambiente dentro 
 | Variável | Consumidor | Uso |
 | --- | --- | --- |
 | `VITE_API_URL` | web | Endereço público da API |
+| `EXPO_PUBLIC_API_URL` | mobile | Endereço da API acessível pelo aparelho |
 | `PORT` | api | Porta HTTP |
 | `CORS_ORIGIN` | api | Origem aceita no navegador |
 | `SUPABASE_URL` | api | URL do projeto |
@@ -56,7 +67,7 @@ Copie `.env.example` para `.env` na raiz. Não crie arquivos de ambiente dentro 
 | `SUPABASE_SECRET_KEY` | api | Operações administrativas no servidor |
 | `SUPABASE_DB_URL` | ferramentas | Conexão PostgreSQL/migrations |
 
-O Vite carrega o ambiente da raiz por meio de `envDir`. Somente variáveis que começam com `VITE_` são expostas ao navegador.
+Vite e Expo leem a configuração da raiz. Somente a URL pública da API é enviada aos clientes; segredos do Supabase permanecem exclusivos da API.
 
 ## Instalação e execução
 
@@ -72,6 +83,14 @@ Em outro terminal:
 ```bash
 npm run dev:web
 ```
+
+Para executar o aplicativo, use um terceiro terminal:
+
+```bash
+npm run dev:mobile
+```
+
+No aparelho físico, `EXPO_PUBLIC_API_URL` deve usar o IPv4 do computador, e ambos precisam estar na mesma rede. Exemplo: `http://192.168.0.10:3001`.
 
 O front abre normalmente em `http://localhost:5173` e a API em `http://localhost:3001`.
 
@@ -90,6 +109,12 @@ Se a API estiver temporariamente indisponível, o catálogo local em `data/flavo
 O banco contém `profiles`, `products`, `orders` e `order_items`. Mudanças no schema devem ser criadas como uma nova migration; uma migration já aplicada não deve ser reescrita.
 
 Consulte [API.md](API.md) para endpoints, exemplos e códigos HTTP.
+
+## Aplicativo mobile
+
+O workspace `mobile` usa Expo SDK 58 e React Native. As três telas foram reconstruídas com componentes nativos (`View`, `Text`, `Pressable`, `FlatList` e `TextInput`), sem reutilizar HTML ou CSS da web.
+
+A navegação inferior mantém Home, Cardápio e Carrinho. O catálogo vem de `/products`, com fallback local em caso de indisponibilidade. O login chama `/auth/login` e salva o access token usando `expo-secure-store`.
 
 ## Segurança
 

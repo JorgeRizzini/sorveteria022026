@@ -8,4 +8,5 @@ dist/
 .DS_Store
 .idea/
 .vscode/
+.expo/
 supabase/.temp/
