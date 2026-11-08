@@ -16,3 +16,10 @@ authRouter.post('/login', async (req, res) => {
   if (error) { res.status(401).json({ error: 'E-mail ou senha inválidos.' }); return }
   res.json({ user: { id: data.user.id, email: data.user.email }, session: data.session })
 })
+
+authRouter.post('/refresh', async (req, res) => {
+  const input = z.object({ refreshToken: z.string().min(1) }).parse(req.body)
+  const { data, error } = await createPublicAuthClient().auth.refreshSession({ refresh_token: input.refreshToken })
+  if (error || !data.session) { res.status(401).json({ error: 'Sessão expirada. Entre novamente.' }); return }
+  res.json({ user: data.user && { id: data.user.id, email: data.user.email }, session: data.session })
+})
