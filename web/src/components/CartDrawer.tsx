@@ -1,0 +1,9 @@
+import type { CartItem } from '../types/flavor'
+
+type CartDrawerProps = { cart: CartItem[]; onClose: () => void; onClear: () => void; onChangeQuantity: (item: CartItem, amount: number) => void; onCheckout: () => void }
+
+export function CartDrawer({ cart, onClose, onClear, onChangeQuantity, onCheckout }: CartDrawerProps) {
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0)
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
+  return <aside className="cart-drawer" aria-label="Carrinho de compras"><button className="drawer-close" type="button" onClick={onClose} aria-label="Fechar carrinho">×</button><span className="eyebrow gold-label">SEU PEDIDO</span><h2>Meu carrinho</h2>{cart.length ? <><p className="drawer-count">{totalItems} {totalItems === 1 ? 'item' : 'itens'} selecionados</p><div className="drawer-items">{cart.map((item) => <article className="drawer-item" key={item.id ?? item.name}><div className={`drawer-item-art ${item.family}`}>{item.emoji}</div><div><h3>{item.name}</h3><small>R${item.price} cada</small><div className="quantity-stepper compact"><button type="button" aria-label={`Diminuir ${item.name}`} onClick={() => onChangeQuantity(item, -1)}>−</button><span>{item.quantity}</span><button type="button" aria-label={`Aumentar ${item.name}`} onClick={() => onChangeQuantity(item, 1)}>+</button></div></div><strong>R${item.price * item.quantity}</strong></article>)}</div><div className="drawer-total"><span>Total</span><strong>R${total}</strong></div><button type="button" className="dark-button drawer-checkout" onClick={onCheckout}>Ir para o checkout</button><button type="button" className="clear-cart-button" onClick={onClear}>Limpar carrinho</button></> : <div className="drawer-empty"><span>🍦</span><h3>Seu carrinho está vazio</h3><p>Escolha um sabor para começar.</p></div>}</aside>
+}

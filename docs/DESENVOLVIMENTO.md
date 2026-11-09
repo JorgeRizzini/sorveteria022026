@@ -61,7 +61,7 @@ Copie `.env.example` para `.env` na raiz. Não crie arquivos de ambiente dentro 
 | `VITE_API_URL` | web | Endereço público da API |
 | `EXPO_PUBLIC_API_URL` | mobile | Endereço da API acessível pelo aparelho |
 | `PORT` | api | Porta HTTP |
-| `CORS_ORIGIN` | api | Origem aceita no navegador |
+| `CORS_ORIGIN` | api | Origens aceitas no navegador, separadas por vírgula |
 | `SUPABASE_URL` | api | URL do projeto |
 | `SUPABASE_PUBLISHABLE_KEY` | api | Fluxos públicos de Auth |
 | `SUPABASE_SECRET_KEY` | api | Operações administrativas no servidor |

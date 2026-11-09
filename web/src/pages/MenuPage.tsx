@@ -4,7 +4,7 @@ import type { Category, Flavor } from '../types/flavor'
 
 type Filter = 'Todos os Sabores' | Category
 
-export function MenuPage({ products, onAdd }: { products: Flavor[]; onAdd: (flavor: Flavor) => void }) {
+export function MenuPage({ products, onAdd }: { products: Flavor[]; onAdd: (flavor: Flavor, quantity: number) => void }) {
   const [search, setSearch] = useState('')
   const [category, setCategory] = useState<Filter>('Todos os Sabores')
   const categories: Filter[] = ['Todos os Sabores', 'Clássicos', 'Tropicais', 'Especiais', 'Veganos']

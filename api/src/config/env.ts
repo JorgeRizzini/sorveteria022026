@@ -6,7 +6,9 @@ config({ path: fileURLToPath(new URL('../../../.env', import.meta.url)) })
 
 const envSchema = z.object({
   PORT: z.coerce.number().int().positive().default(3001),
-  CORS_ORIGIN: z.string().url().default('http://localhost:5173'),
+  CORS_ORIGIN: z.string().default('http://localhost:5173').transform((value) =>
+    value.split(',').map((origin) => origin.trim()).filter(Boolean),
+  ).pipe(z.array(z.string().url()).min(1)),
   SUPABASE_URL: z.string().url(),
   SUPABASE_PUBLISHABLE_KEY: z.string().min(20),
   SUPABASE_SECRET_KEY: z.string().min(20),

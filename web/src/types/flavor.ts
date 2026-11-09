@@ -12,3 +12,5 @@ export type Flavor = {
   category: Category
   new?: boolean
 }
+
+export type CartItem = Flavor & { quantity: number }
