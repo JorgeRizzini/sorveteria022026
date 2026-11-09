@@ -112,9 +112,9 @@ Consulte [API.md](API.md) para endpoints, exemplos e códigos HTTP.
 
 ## Aplicativo mobile
 
-O workspace `mobile` usa Expo SDK 58 e React Native. As três telas foram reconstruídas com componentes nativos (`View`, `Text`, `Pressable`, `FlatList` e `TextInput`), sem reutilizar HTML ou CSS da web.
+O workspace `mobile` usa Expo SDK 58 e React Native. As telas foram reconstruídas com componentes nativos (`View`, `Text`, `Pressable`, `FlatList` e `TextInput`), sem reutilizar HTML ou CSS da web.
 
-A navegação inferior mantém Home, Cardápio e Carrinho. O catálogo vem de `/products`, com fallback local em caso de indisponibilidade. O login chama `/auth/login` e salva o access token usando `expo-secure-store`.
+A navegação inferior mantém Home, Cardápio, Carrinho e Conta. O catálogo vem de `/products`, com fallback local em caso de indisponibilidade. Cadastro e login usam a API; access token e refresh token ficam no `expo-secure-store`. O carrinho é persistido com AsyncStorage, o checkout cria o pedido no servidor e a Conta exibe perfil e histórico de pedidos.
 
 ## Segurança
 

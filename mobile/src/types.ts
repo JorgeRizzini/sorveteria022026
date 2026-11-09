@@ -14,4 +14,9 @@ export type Flavor = {
   new?: boolean
 }
 
-export type Screen = 'home' | 'menu' | 'cart'
+export type Screen = 'home' | 'menu' | 'cart' | 'account'
+
+export type User = { id: string; email?: string }
+export type Profile = { id: string; full_name: string | null; phone: string | null; created_at: string }
+export type OrderItem = { id: string; product_name: string; unit_price_cents: number; quantity: number }
+export type Order = { id: string; status: string; total_cents: number; created_at: string; order_items: OrderItem[] }

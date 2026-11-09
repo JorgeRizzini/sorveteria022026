@@ -38,6 +38,7 @@ No PowerShell que bloqueia `npm.ps1`, utilize `npm.cmd`.
 - PostgreSQL com migrations, RLS e criação transacional de pedido
 - Aplicativo React Native para Android e iOS com Expo
 - Token de login protegido pelo SecureStore no aplicativo
+- Carrinho mobile persistente, cadastro, checkout e histórico de pedidos
 
 ## Estrutura
 

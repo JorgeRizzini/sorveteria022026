@@ -59,6 +59,16 @@ Retorna `201`. Conforme a configuração do Supabase, pode exigir a confirmaçã
 
 Retorna o usuário e a sessão. Credenciais incorretas retornam `401`.
 
+### Renovar sessão
+
+`POST /auth/refresh`
+
+```json
+{ "refreshToken": "token-de-renovacao" }
+```
+
+Retorna uma nova sessão. O aplicativo armazena access token e refresh token no SecureStore e usa esta rota quando recebe `401` em uma operação autenticada.
+
 ### Perfil atual
 
 `GET /me` — protegida. Retorna o usuário autenticado e seu registro em `profiles`.
