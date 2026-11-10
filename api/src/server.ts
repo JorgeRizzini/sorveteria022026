@@ -2,5 +2,5 @@ import { app } from './app.js'
 import { env } from './config/env.js'
 
 app.listen(env.PORT, '0.0.0.0', () => {
-  console.log(`ArcadeCream API disponível na porta ${env.PORT}`)
+  console.log(`Soft Cream API disponível na porta ${env.PORT}`)
 })

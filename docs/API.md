@@ -1,4 +1,4 @@
-# API ArcadeCream
+# API Soft Cream
 
 API REST em TypeScript responsável por autenticação, catálogo e pedidos. Em desenvolvimento, a URL padrão é `http://localhost:3001`.
 

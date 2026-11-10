@@ -1,4 +1,4 @@
-# ArcadeCream
+# Soft Cream
 
 Aplicação full stack de uma sorveteria artesanal, construída com React, React Native/Expo, TypeScript, Express e Supabase. O projeto possui experiências web e mobile para Home, Cardápio, Carrinho e Login.
 

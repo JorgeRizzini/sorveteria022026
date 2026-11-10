@@ -1,4 +1,4 @@
-# ArcadeCream Mobile
+# Soft Cream Mobile
 
 Aplicativo React Native criado com Expo. Reutiliza a API e o banco Supabase do projeto.
 

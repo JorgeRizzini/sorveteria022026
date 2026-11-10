@@ -1,13 +1,10 @@
-import { StyleSheet, Text, View } from 'react-native'
-import { colors } from '../theme'
+import { Image, StyleSheet, View } from 'react-native'
 
 export function Brand() {
-  return <View style={styles.brand}><View><Text style={styles.arcade}>ARCADE</Text><Text style={styles.cream}>CREAM</Text></View><Text style={styles.icon}>🍦</Text></View>
+  return <View style={styles.brand}><Image accessibilityLabel="Soft Cream" resizeMode="cover" source={require('../../assets/soft-cream-logo.png')} style={styles.logo} /></View>
 }
 
 const styles = StyleSheet.create({
-  brand: { alignItems: 'center', backgroundColor: colors.black, borderRadius: 6, flexDirection: 'row', paddingHorizontal: 9, paddingVertical: 5 },
-  arcade: { color: colors.lilac, fontSize: 8, fontWeight: '900', letterSpacing: 1 },
-  cream: { color: colors.white, fontSize: 8, fontWeight: '900', letterSpacing: 1 },
-  icon: { fontSize: 14, marginLeft: 4 },
+  brand: { borderRadius: 8, height: 42, overflow: 'hidden', width: 116 },
+  logo: { height: '100%', width: '100%' },
 })

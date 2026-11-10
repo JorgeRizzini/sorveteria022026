@@ -1,4 +1,4 @@
-# Desenvolvimento e organização do ArcadeCream
+# Desenvolvimento e organização do Soft Cream
 
 ## Visão geral
 
