@@ -7,7 +7,7 @@ import type { Category, Flavor } from '../types'
 type Filter = 'Todos' | Category
 const filters: Filter[] = ['Todos', 'Clássicos', 'Tropicais', 'Especiais', 'Veganos']
 
-export function MenuScreen({ products, onAdd }: { products: Flavor[]; onAdd: (flavor: Flavor) => void }) {
+export function MenuScreen({ products, onAdd }: { products: Flavor[]; onAdd: (flavor: Flavor, quantity: number) => void }) {
   const [query, setQuery] = useState('')
   const [filter, setFilter] = useState<Filter>('Todos')
   const visible = useMemo(() => products.filter((item) => (filter === 'Todos' || item.category === filter) && item.name.toLocaleLowerCase('pt-BR').includes(query.toLocaleLowerCase('pt-BR'))), [filter, products, query])

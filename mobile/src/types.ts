@@ -14,6 +14,8 @@ export type Flavor = {
   new?: boolean
 }
 
+export type CartItem = Flavor & { quantity: number }
+
 export type Screen = 'home' | 'menu' | 'cart' | 'account'
 
 export type User = { id: string; email?: string }
